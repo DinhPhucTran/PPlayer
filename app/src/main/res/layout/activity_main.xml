@@ -15,7 +15,6 @@
         sothree:umanoPanelHeight="70dp"
         sothree:umanoShadowHeight="4dp"
         android:id="@+id/mainSlidingLayout"
-        sothree:umanoDragView="@+id/mainPlayerContainer"
         android:gravity="bottom">
 
         <RelativeLayout

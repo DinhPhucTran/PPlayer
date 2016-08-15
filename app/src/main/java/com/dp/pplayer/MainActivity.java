@@ -63,6 +63,8 @@ public class MainActivity extends AppCompatActivity implements PrepareMusicRetri
                 if(intent.getAction().equals(MusicService.ACTION_ON_COMPLETION) || intent.getAction().equals(MusicService.ACTION_ON_PREPARED_PLAYER)) {
                     mainPlayerFragment.setSeekbarValues();
                     mainPlayerFragment.updatePlayerUI();
+                    if(slidingLayout.getPanelState() == SlidingUpPanelLayout.PanelState.HIDDEN)
+                        slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                     Toast.makeText(getApplicationContext(), "UI updated", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -112,6 +114,9 @@ public class MainActivity extends AppCompatActivity implements PrepareMusicRetri
         slidingLayout.setPanelSlideListener(onSlideListener());
         //slidingLayout.setDragView(mainPlayerFragment.playerHeaderBg);
         slidingLayout.setScrollableView(mainPlayerFragment.playerPlaylist);
+        if(MusicService.getState().equals("Stopped") || MusicService.getState().equals("Paused") || MusicService.getState().equals("Preparing")){
+            slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
+        }
     }
 
     @Override

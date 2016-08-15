@@ -116,7 +116,8 @@ public class PlayerFragment extends Fragment {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent nextIntent = new Intent(MusicService.ACTION_NEXT);
+                Intent nextIntent = new Intent(v.getContext(), MusicService.class);
+                nextIntent.setAction(MusicService.ACTION_NEXT);
                 v.getContext().startService(nextIntent);
             }
         });
@@ -124,7 +125,8 @@ public class PlayerFragment extends Fragment {
         btnPre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent preIntent = new Intent(MusicService.ACTION_PREV);
+                Intent preIntent = new Intent(v.getContext(), MusicService.class);
+                preIntent.setAction(MusicService.ACTION_PREV);
                 v.getContext().startService(preIntent);
 //                setSeekbarValues();
 //                updatePlayerUI();
@@ -138,7 +140,8 @@ public class PlayerFragment extends Fragment {
                 v.getContext().startService(playIntent);
                 if (MusicService.mPlayer.isPlaying()) {
                     btnHeaderPlay.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_play));
-                    btnPlay.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_play));
+                    //btnPlay.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_play));
+                    btnPlay.setBackgroundResource(R.drawable.btn_play);
                 } else {
                     btnHeaderPlay.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_pause));
                     btnPlay.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_pause));

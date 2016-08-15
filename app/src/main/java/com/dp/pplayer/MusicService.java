@@ -46,9 +46,9 @@ public class MusicService extends Service implements MediaPlayer.OnCompletionLis
 
     enum State {
         Retrieving, Preparing, Stopped, Paused, Playing
-    };
+    }
 
-    public static State mState = State.Stopped;
+    private static State mState = State.Stopped;
 //    MusicRetriever mRetriever;
 
     //AudioManager mAudioManager;
@@ -133,6 +133,7 @@ public class MusicService extends Service implements MediaPlayer.OnCompletionLis
         } else {
 
         }
+
         Intent completionIntent = new Intent();
         completionIntent.setAction(ACTION_ON_COMPLETION);
         sendBroadcast(completionIntent);
@@ -140,6 +141,8 @@ public class MusicService extends Service implements MediaPlayer.OnCompletionLis
 
     @Override
     public boolean onError(MediaPlayer mp, int what, int extra) {
+        mState = State.Stopped;
+        releaseMediaPlayer();
         return false;
     }
 
