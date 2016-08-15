@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_selector"
+    android:id="@+id/playlistItem"
+    android:onClick="songPicked">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/songTitle"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:text="Hello"
+        android:paddingLeft="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Adele"
+        android:textSize="15dp"
+        android:paddingLeft="10dp"
+        android:id="@+id/songArtist"/>
+
+</LinearLayout>
